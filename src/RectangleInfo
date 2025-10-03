@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+public class RectangleInfo
+{
+    public static void main(String[] args)
+    {
+        Scanner in = new Scanner(System.in);
+        String trash = "";
+        double length = 0.0;  // Length of the rectangle
+        double width = 0.0;   // Width of the rectangle
+        double area = 0.0;
+        double perimeter = 0.0;
+        double hypotenuse = 0.0;
+        boolean done = false;
+
+        // Input the length
+        do {
+            System.out.print("Enter the length: ");
+            if (in.hasNextDouble())
+            {
+                length = in.nextDouble();
+                in.nextLine(); // clear the newLine from the buffer
+                if (length <= 0)
+                {
+                    System.out.println("Length must be greater than zero. Please try again.");
+                } else
+                {
+                    done = true;
+                }
+            } else  // Not a number
+            {
+                trash = in.nextLine();
+                System.out.println("Illegal number: " + trash + ". Please enter a valid number.");
+            }
+        } while (!done);
+
+        done = false; // reset for next input
+
+        // Input width
+        do {
+            System.out.print("Enter the width: ");
+            if (in.hasNextDouble())
+            {
+                width = in.nextDouble();
+                in.nextLine(); // clear the newLine from the buffer
+                if (width <= 0)
+                {
+                    System.out.println("Width must be greater than zero. Please try again.");
+                } else
+                {
+                    done = true;
+                }
+            } else  // Not a number
+            {
+                trash = in.nextLine();
+                System.out.println("Illegal number: " + trash + ". Please enter a valid number.");
+            }
+        } while (!done);
+
+
+        area = length * width; // Area calculation
+        perimeter = 2 * (length * width); // Perimeter calculation
+        hypotenuse = Math.sqrt(length * length + width * width); // Hypotenuse calculation
+
+        System.out.printf("For a rectangle with length %.2f and width %.2f\n", length, width);
+        System.out.printf("Area: %.2f%n", area);
+        System.out.printf("Perimeter: %.2f%n" , perimeter);
+        System.out.printf("Hypotenuse: %.2f%n" , hypotenuse);
+    }
+}
